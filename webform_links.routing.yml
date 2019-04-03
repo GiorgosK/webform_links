@@ -1,0 +1,8 @@
+
+webform_links.display_webform_controller_list:
+  path: '/webform_links/list'
+  defaults:
+    _controller: '\Drupal\webform_links\Controller\DisplayWebformController::list'
+    _title: 'list'
+  requirements:
+    _permission: 'access content'
