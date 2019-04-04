@@ -19,7 +19,7 @@ class DisplayWebformController extends ControllerBase {
    */
   public function list() {
 
-    $query = \Drupal::service('entity.query')->get('webform');
+    $query = $this->entityTypeManager()->getStorage('webform')->getQuery();
     $entity_ids = $query->condition('status', 'open')->execute();
     $webform_id = array();
     foreach($entity_ids as $webid){
