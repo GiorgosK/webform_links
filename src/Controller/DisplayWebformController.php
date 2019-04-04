@@ -20,13 +20,9 @@ class DisplayWebformController extends ControllerBase {
   public function list() {
 
     $query = $this->entityTypeManager()->getStorage('webform')->getQuery();
-    $entity_ids = $query->condition('status', 'open')->execute();
-    $webform_id = array();
-    foreach($entity_ids as $webid){
-      $webform_id[]=$webid;
-    }
+    $webform_ids = $query->condition('status', 'open')->execute();
 
-    $webforms = Webform::loadMultiple($webform_id);
+    $webforms = Webform::loadMultiple($webform_ids);
     $webform_urls = [];
     foreach($webforms as $webform){
       $webform_urls[] = Link::fromTextAndUrl($webform->get('title'), $webform->toUrl());
